@@ -1,5 +1,8 @@
 package com.example.todolist;
 
+import com.jminiapp.core.api.JMiniApp;
+import com.jminiapp.core.api.JMiniAppConfig;
+import com.jminiapp.core.engine.JMiniAppRunner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,7 +19,6 @@ public class TodoListApp extends JMiniApp {
     protected void initialize() {
         List<Task> data = context.getData();
         tasks = data.isEmpty() ? new ArrayList<>() : new ArrayList<>(data);
-        // Find next ID
         if (!tasks.isEmpty()) {
             nextId = tasks.stream().mapToInt(Task::getId).max().orElse(0) + 1;
         }
@@ -49,6 +51,11 @@ public class TodoListApp extends JMiniApp {
     @Override
     protected void shutdown() {
         context.setData(new ArrayList<>(tasks));
+        try {
+             context.exportData("json"); 
+        } catch (Exception e) {
+             System.err.println("Failed to auto-save: " + e.getMessage());
+        }
     }
 
     private void listTasks() {
@@ -103,9 +110,10 @@ public class TodoListApp extends JMiniApp {
     }
 
     public static void main(String[] args) {
-    JMiniAppBuilder builder = JMiniAppBuilder.forApp(TodoListApp.class)
-                                            .withState(Task.class);
-    JMiniAppRunner runner = builder.buildRunner();
-    runner.run(args);
-}
+        JMiniAppRunner.forApp(TodoListApp.class)
+                .withState(Task.class)
+                .withAdapters(new TaskJSONAdapter())
+                .named("Todo List")
+                .run(args);
+    }
 }
