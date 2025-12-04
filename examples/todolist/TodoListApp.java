@@ -103,8 +103,9 @@ public class TodoListApp extends JMiniApp {
     }
 
     public static void main(String[] args) {
-        JMiniAppRunner.forApp(TodoListApp.class)
-                .withState(Task.class)
-                .run(args);
-    }
+    JMiniAppBuilder builder = JMiniAppBuilder.forApp(TodoListApp.class)
+                                            .withState(Task.class);
+    JMiniAppRunner runner = builder.buildRunner();
+    runner.run(args);
+}
 }
