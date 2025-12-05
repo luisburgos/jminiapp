@@ -23,8 +23,8 @@ The system uses the `DaycareState` class as a single container for all game data
 
 ### Lifecycle and Persistence
 
-1. Initialization: Upon startup, the program attempts to load the `DaycareData.json` file. If the load is successful, the previous state is restored. If the file does not exist (or if "Reset System" is selected), `state.resetToDefaults()` is called to initialize the Trainer with 100,000 $ and the three starter Pokemon at Level 1.
-2. Shutdown: Before exiting, the program calls `context.exportData()` which writes the complete `DaycareState` object to the `DaycareData.json` file, guaranteeing no data is lost.
+-  **Initialization**: Upon startup, the program attempts to load the `DaycareData.json` file. If the load is successful, the previous state is restored. If the file does not exist (or if "Reset System" is selected), `state.resetToDefaults()` is called to initialize the Trainer with 100,000 $ and the three starter Pokemon at Level 1.
+-  **Shutdown**: Before exiting, the program calls `context.exportData()` which writes the complete `DaycareState` object to the `DaycareData.json` file, guaranteeing no data is lost.
 
 ### Growth and Billing Mechanics
 
@@ -95,14 +95,14 @@ Once configured, the system displays the main menu (along with the Trainer's cur
 - Java 17 or higher
 - Maven 3.6 or higher
 
-1. Project Compilation
+### 1. Project Compilation
 
 From the **root** of the repository (jminiapp/):
 ```bash
 mvn clean install
 ```
 
-2. Application Execution
+### 2. Application Execution
 
 From the **example directory** (examples/pokemon-daycare):
 ```bash
@@ -114,18 +114,18 @@ mvn exec:java
 
 The following space is reserved for the screenshots that demonstrate the application's workflow (Initial Configuration, Leaving a Pokemon, Waiting, Picking up a Pokemon, Successful Payment, and System Reset).
 
-**Screenshot 1: Initial Configuration**  
+**Screenshot 1**  
 ![Initial Configuration](screenshots/1.png)
 
-**Screenshot 2: Leaving a Pokemon**  
+**Screenshot 2**  
 ![Leaving a Pokemon](screenshots/2.png)
 
-**Screenshot 3: Waiting and Shutdown**  
+**Screenshot 3**  
 ![Waiting and Shutdown](screenshots/3.png)
 
-**Screenshot 4: Level and Cost Projection**  
+**Screenshot 4**  
 ![Level and Cost Projection](screenshots/4.png)
 
-**Screenshot 5: Successful Pickup**  
+**Screenshot 5:**  
 ![Successful Pickup](screenshots/5.png)
 
