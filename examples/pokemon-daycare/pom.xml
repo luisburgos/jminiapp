@@ -12,9 +12,9 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>todo-list-example</artifactId>
+    <artifactId>pokemon-daycare-example</artifactId>
     <packaging>jar</packaging>
-    <name>Todo List Example</name>
+    <name>Pokemon Daycare Example</name>
 
     <dependencies>
         <dependency>
@@ -31,7 +31,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>com.jminiapp.examples.todo.TodoAppRunner</mainClass>
+                    <mainClass>com.jminiapp.examples.daycare.DaycareAppRunner</mainClass>
                 </configuration>
             </plugin>
         </plugins>

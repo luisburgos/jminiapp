@@ -1,0 +1,27 @@
+[
+  {
+    "isConfigured": true,
+    "daycareName": "PokeCare",
+    "costPerMinute": 10,
+    "expPerMinute": 100,
+    "trainerMoney": 99910.0,
+    "party": [
+      {
+        "name": "Charmander",
+        "level": 1,
+        "currentExp": 0
+      },
+      {
+        "name": "Squirtle",
+        "level": 1,
+        "currentExp": 0
+      },
+      {
+        "name": "Bulbasaur",
+        "level": 6,
+        "currentExp": 100
+      }
+    ],
+    "daycareStorage": []
+  }
+]
