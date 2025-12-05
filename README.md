@@ -62,6 +62,8 @@ Check out the **[Counter App](./examples/counter)** - a complete example demonst
 - JSON persistence for saving counter state
 - Clean application lifecycle implementation
 - Import/export functionality
+- School Control: Manage students and persistence with JSON
+
 
 Run it with:
 ```bash
