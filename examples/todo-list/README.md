@@ -1,125 +1,112 @@
-Todo List Example
+# Todo List Example
 
-A simple task management application demonstrating key features of the JMiniApp framework, including state persistence and file handling.
+A simple task management application demonstrating key features of the JMiniApp framework, including state persistence, lifecycle management, and file handling.
 
-Overview
+## Overview
 
-This example showcases how to use the JMiniApp lifecycle to manage a collection of custom Java objects (TodoItem). It allows users to view, add, and complete tasks, and ensures the list is automatically saved and reloaded between runs.
+This example shows how to create a functional mini-app that manages a collection of custom objects (TodoItem). It demonstrates how to persist a list of objects automatically using the framework's context and how to export/import that data using a JSON adapter.
 
-Features
+## Features
 
-Add Task: Adds a new item to the list.
+* Add Task: Create new tasks with descriptions.
 
-Complete Task: Marks an existing task as finished.
+* Complete Task: Mark existing tasks as done.
 
-Persistent State: The entire task list is saved and restored automatically by the framework.
+* Persistent State: The task list is automatically saved and restored between application runs.
 
-JSON Adapter: Configured to handle import/export of the task list to a JSON file.
+* JSON Persistence: Uses a custom JSONAdapter to handle data serialization to disk.
 
-Project Structure
+* Interactive Menu: Simple CLI interface managed by the run() loop.
+
+## Project Structure
 
 todo-list/
 ├── pom.xml
 ├── README.md
 └── src/main/java/com/jminiapp/examples/todo/
     ├── TodoApp.java           # Main application logic (JMiniApp implementation)
-    ├── TodoAppRunner.java     # Bootstrap configuration (main method)
-    ├── TodoItem.java          # The state model (a single task)
-    └── TodoJSONAdapter.java   # JSON format adapter for TodoItem
+    ├── TodoAppRunner.java     # Bootstrap configuration (Main entry point)
+    ├── TodoItem.java          # The state model (POJO)
+    └── TodoJSONAdapter.java   # Adapter for JSON file handling
+## Key Components
 
+### TodoItem (TodoItem.java)
 
-Key Components
+The State Model representing a single unit of data. It contains:
 
-TodoItem (TodoItem.java)
+* description: The text of the task.
 
-This is the State Model representing a single task. It contains:
+* isDone: A boolean flag for the task status.
 
-description: The task text.
+* Includes an empty constructor required for successful deserialization.
 
-isDone: A boolean flag indicating if the task is complete.
+### TodoJSONAdapter (TodoJSONAdapter.java)
 
-TodoJSONAdapter (TodoJSONAdapter.java)
+The Format Adapter that implements JSONAdapter<TodoItem>.
 
-This is the Format Adapter. It implements JSONAdapter<TodoItem> to enable the framework to automatically convert the list of TodoItem objects into a JSON format for saving and loading from the disk.
+* It tells the framework exactly which class type (TodoItem.class) to use when reading or writing JSON files.
 
-TodoApp (TodoApp.java)
+* Enables the context.getData() and context.setData() methods to work with files on disk.
 
-This is the core logic and implements the JMiniApp lifecycle:
+### TodoApp (TodoApp.java)
 
-initialize(): Checks the context for saved tasks and loads them, or starts with an empty list.
+The core application class extending JMiniApp. It implements the lifecycle:
 
-run(): The main loop that displays the menu (A to Add, C to Complete, X to Exit) and processes user input.
+initialize(): Loads existing tasks from the context or creates a new list.
 
-shutdown(): Saves the final list of tasks back to the context for persistence before the application closes.
+run(): Handles the main user interface loop (Menu display and Input handling).
 
-TodoAppRunner (TodoAppRunner.java)
+shutdown(): Saves the current state of tasks back to the context before the program exits.
 
-The Bootstrap configuration, which ties everything together:
+### TodoAppRunner (TodoAppRunner.java)
 
-Registers TodoApp.class as the main application.
+The Bootstrap class that configures the engine:
 
-Registers TodoItem.class as the persistent state model.
+* Connects the App (TodoApp), the State (TodoItem), and the Adapter (TodoJSONAdapter).
 
-Registers TodoJSONAdapter to enable file persistence.
+* Sets the internal application name used for file generation (e.g., MyTodoList.json).
 
-Building and Running
+## Building and Running
 
-Prerequisites
+### Prerequisites
 
-Java 17 or higher
+* Java 17 or higher
 
-Maven 3.6 or higher
+* Maven 3.6 or higher
 
-Build the project
+### 1. Build the project
 
-From the project root directory (jminiapp/):
+From the root of the jminiapp repository:
+
+Bash
 
 mvn clean install
+### 2. Run the application
 
+Navigate to the example directory and run using Maven:
 
-Run the application
+Bash
 
-From the examples/todo-list directory:
-
+cd examples/todo-list
 mvn exec:java
-
-
-Usage Example
+## Usage Example
 
 --- Initializing Todo List App ---
-No existing tasks found. Starting fresh.
+Loaded 2 tasks.
 
 --- My Tasks ---
-(No tasks yet)
-----------------
-A. Add Task
-C. Complete Task
-X. Exit
-Select option: A
-Enter task description: Finish JMiniApp project
-
---- My Tasks ---
-1. [ ] Finish JMiniApp project
-----------------
-A. Add Task
-C. Complete Task
-X. Exit
-Select option: A
-Enter task description: Buy milk
-
---- My Tasks ---
-1. [ ] Finish JMiniApp project
-2. [ ] Buy milk
+1. [X] Learn JMiniApp
+2. [ ] Create a Pull Request
 ----------------
 A. Add Task
 C. Complete Task
 X. Exit
 Select option: C
-Enter number to complete: 1
+Enter number to complete: 2
 
 --- My Tasks ---
-1. [X] Finish JMiniApp project
-2. [ ] Buy milk
+1. [X] Learn JMiniApp
+2. [X] Create a Pull Request
 ----------------
 A. Add Task
 C. Complete Task
