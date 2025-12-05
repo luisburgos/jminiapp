@@ -1,0 +1,17 @@
+[
+  {
+    "question": "Hallo",
+    "answer": "Hello",
+    "isMemorized": true
+  },
+  {
+    "question": "Rot",
+    "answer": "Red",
+    "isMemorized": true
+  },
+  {
+    "question": "Machen",
+    "answer": "Make",
+    "isMemorized": true
+  }
+]
