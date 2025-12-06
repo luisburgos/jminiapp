@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ToDoList Example - JMiniApp</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    li.done { text-decoration: line-through; color: gray; }
+  </style>
+</head>
+<body>
+  <h1>ToDoList Example</h1>
+
+  <input id="newTodo" placeholder="New todo">
+  <button id="addBtn">Add</button>
+  <button id="clearBtn">Clear all</button>
+
+  <ul id="list"></ul>
+
+  <script src="./main.js"></script>
+  <script>
+    const todoList = new TodoList();
+    const input = document.getElementById('newTodo');
+    const addBtn = document.getElementById('addBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const ul = document.getElementById('list');
+
+    function render() {
+      ul.innerHTML = '';
+      todoList.getAll().forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.title + (item.completed ? ' (done)' : '');
+        li.className = item.completed ? 'done' : '';
+        // Toggle on click
+        li.onclick = () => {
+          todoList.toggle(item.id);
+          render();
+        };
+        // Remove button
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.style.marginLeft = '10px';
+        removeBtn.onclick = (e) => {
+          e.stopPropagation();
+          todoList.remove(item.id);
+          render();
+        };
+        li.appendChild(removeBtn);
+        ul.appendChild(li);
+      });
+    }
+
+    addBtn.onclick = () => {
+      const title = input.value;
+      todoList.add(title);
+      input.value = '';
+      render();
+    };
+
+    clearBtn.onclick = () => {
+      todoList.clear();
+      render();
+    };
+
+    // initial render
+    render();
+  </script>
+</body>
+</html>
