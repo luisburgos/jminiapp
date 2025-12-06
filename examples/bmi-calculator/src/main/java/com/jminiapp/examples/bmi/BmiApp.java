@@ -16,6 +16,8 @@ import java.util.Scanner;
  * - View BMI category (Underweight, Normal, Overweight, Obese)
  * - Save and load BMI data from JSON files
  * - Reset values
+ * 
+ * @author IvnVg04
  */
 public class BmiApp extends JMiniApp {
     private Scanner scanner;
