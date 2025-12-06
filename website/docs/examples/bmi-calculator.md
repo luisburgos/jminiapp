@@ -6,6 +6,10 @@ sidebar_position: 3
 
 Learn how to build a Body Mass Index (BMI) calculator application using the JMiniApp framework. This tutorial will guide you through creating a health-focused app that calculates BMI, categorizes results, and persists data.
 
+Author
+Ivan Vega (@IvnVg4)
+
+
 ## What You'll Build
 
 A complete BMI calculator application that:
