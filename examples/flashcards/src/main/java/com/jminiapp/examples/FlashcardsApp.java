@@ -66,9 +66,10 @@ public class FlashcardsApp extends JMiniApp {
         System.out.println("2. Edit Flashcard");
         System.out.println("3. Delete Flashcard");
         System.out.println("4. Review Flashcards");
-        System.out.println("5. Export to JSON file");
-        System.out.println("6. Import from JSON file");
-        System.out.println("7. Exit");
+        System.out.println("5. Show all Flashcards");
+        System.out.println("6. Export to JSON file");
+        System.out.println("7. Import from JSON file");
+        System.out.println("8. Exit");
         System.out.print("Choose an option: ");
     }
 
@@ -81,26 +82,29 @@ public class FlashcardsApp extends JMiniApp {
                 break;
             case "2":
                 System.out.println("Write the index of the flashcard to edit:");
-                index = Integer.parseInt(scanner.nextLine());
+                index = Integer.parseInt(scanner.nextLine()) - 1;
                 editFlashcard(index);
                 break;
             case "3":
                 System.out.println("Write the index of the flashcard to edit:");
-                index = Integer.parseInt(scanner.nextLine());
+                index = Integer.parseInt(scanner.nextLine()) - 1;
                 deleteFlashcard(index);
                 break;
             case "4":
                 System.out.println("Write the index of the flashcard to review:");
-                index = Integer.parseInt(scanner.nextLine());
+                index = Integer.parseInt(scanner.nextLine()) - 1;
                 reviewFlashcards(index);
                 break;
             case "5":
-                exportToFile();
+                showAllFlashcards();
                 break;
             case "6":
-                importFromFile();
+                exportToFile();
                 break;
             case "7":
+                importFromFile();
+                break;
+            case "8":
                 running = false;
                 break;
             default:
@@ -142,7 +146,7 @@ public class FlashcardsApp extends JMiniApp {
 
     private void createFlashcard() {
         FlashcardsState comparison = new FlashcardsState("","");
-        if(flashcards.size() == 1 && flashcards.getFirst().equals(comparison)){
+        if(flashcards.size() == 1 && flashcards.contains(comparison)){
             flashcards.remove(0);
         }
 
@@ -179,6 +183,7 @@ public class FlashcardsApp extends JMiniApp {
             System.out.println("No flashcards to edit");
             return;
         }
+            index -= 1; // adjust for 0-based index
         flashcards.remove(index);
         System.out.println("Flashcard deleted.");
     }
@@ -186,14 +191,24 @@ public class FlashcardsApp extends JMiniApp {
     private void reviewFlashcards(int index){
         if(flashcards.isEmpty()){
             System.out.println("There are no flashcards");
+            return;
         }
         FlashcardsState flashcard = flashcards.get(index);
         System.out.println("Question: " + flashcard.getQuestion());
         System.out.println("Press Enter to see the answer...");
         scanner.nextLine();
         System.out.println("Answer: " + flashcard.getAnswer());
-        wait(100000); // timeout, create a funcional wait of about 5 seconds for the user to see the result
-        
+        scanner.nextLine(); 
     }
 
+    private void showAllFlashcards() {
+        if (flashcards.isEmpty()) {
+            System.out.println("There are no flashcards to show.");
+            return;
+        }
+        for (int i = 0; i < flashcards.size(); i++) {
+            FlashcardsState flashcard = flashcards.get(i);
+            System.out.println((i + 1) + ". Question: " + flashcard.getQuestion() + " | Answer: " + flashcard.getAnswer());
+        }
+    }
 }

@@ -11,7 +11,7 @@
     <module>examples/counter</module>
     <module>examples/notetaking</module>
     <module>examples/flashcards</module>
-    <module>contacts</module>
+    <module>examples/contacts</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
