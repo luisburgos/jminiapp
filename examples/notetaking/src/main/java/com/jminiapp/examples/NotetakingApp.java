@@ -7,9 +7,9 @@ import java.util.*;
  * A simple note-taking application demonstrating the JMiniApp framework.
  *
  * This app allows users to:
- * - Create a new note
- * - View the current note
  * - Edit the current note
+ * - Delete the current note
+ * - View the current note
  * - Save the note and exit
  */
 
