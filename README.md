@@ -47,13 +47,6 @@ public class HelloApp extends JMiniApp {
 }
 ```
 
-## Documentation
-
-For complete documentation, tutorials, and guides, see the [website](./website) folder:
-
-- [Installation](https://jminiapp.dev/docs/getting-started/installation) - Set up JMiniApp in your project
-- [Build Your First App](https://jminiapp.dev/docs/getting-started/build-your-first-app) - Create your first JMiniApp in 5 minutes
-- [Guides](https://jminiapp.dev/docs/guides/lifecycle) - Framework concepts and best practices
 
 ## Example Application
 
@@ -70,7 +63,7 @@ jminiapp/
 ├── modules/          # Framework core modules
 ├── examples/         # Example applications
 │   └── counter/      # Counter app example
-└── website/          # Documentation website (Docusaurus)
+    └── expense-tracker/  #my app
 ```
 
 ## Building from Source
@@ -93,10 +86,4 @@ npm run build
 - Java 17 or higher
 - Maven 3.6 or higher
 
-## License
-
-This project is an educational framework designed for learning Java application architecture and design patterns.
-
----
-
-**Get Started:** [jminiapp.dev](https://jminiapp.dev)
+Autor: Andry Azael Rabanales Andrade

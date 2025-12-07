@@ -16,6 +16,7 @@
     <modules>
         <module>modules/core</module>
         <module>examples/counter</module>
+        <module>examples/expense-tracker</module>
     </modules>
 
     <properties>
@@ -29,14 +30,12 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- JSON Processing -->
             <dependency>
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
                 <version>${gson.version}</version>
             </dependency>
 
-            <!-- Logging -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -48,7 +47,6 @@
                 <version>${slf4j.version}</version>
             </dependency>
 
-            <!-- Testing -->
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter</artifactId>
