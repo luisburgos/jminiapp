@@ -1,4 +1,4 @@
-package com.jminiapp.examples;
+package com.jminiapp.examples.flashcards;
 
 import com.jminiapp.core.adapters.JSONAdapter;
 
@@ -21,7 +21,7 @@ import com.jminiapp.core.adapters.JSONAdapter;
  */
 public class FlashcardsJSONAdapter implements JSONAdapter<FlashcardsState> {
     @Override
-    public Class<FlashcardsState> getstateClass() {
+    public Class<FlashcardsState> getstateClass() { // Hot spot, except for the return whats inside can be changed
         return FlashcardsState.class;
     }
 }

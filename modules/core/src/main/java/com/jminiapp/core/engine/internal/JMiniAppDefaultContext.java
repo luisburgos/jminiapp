@@ -72,14 +72,14 @@ public class JMiniAppDefaultContext implements JMiniAppContext {
 
     @Override
     public void importData(String filePath, String format) throws IOException {
-        importData(filePath, format, ImportStrategies.REPLACE);
+        importData(filePath, format, ImportStrategies.REPLACE); // Frozen spot, default strategy
     }
 
     @Override
     public void importData(String filePath, String format, ImportStrategy strategy) throws IOException {
         JMiniFormatAdapter<?> adapter = getAdapterForFormat(format);
 
-        String resolvedPath = PathResolver.resolvePath(filePath, resourcesPath);
+        String resolvedPath = PathResolver.resolvePath(filePath, resourcesPath); // Frozen spot, resolve paths
 
         try (InputStream input = new FileInputStream(resolvedPath)) {
             List<?> importedData = adapter.read(input);

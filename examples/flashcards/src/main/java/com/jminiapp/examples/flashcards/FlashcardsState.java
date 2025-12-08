@@ -1,4 +1,4 @@
-package com.jminiapp.examples;
+package com.jminiapp.examples.flashcards;
 
 /**
  * Simple model representing a flashcard with a question and answer.
@@ -6,7 +6,7 @@ package com.jminiapp.examples;
  * This is used by the FlashcardsApp to store the current flashcard state.
  */
 
-public class FlashcardsState {
+public class FlashcardsState { //Hot spot, user-defined model class, neccesary for storing data
     private String question;
     private String answer;
 

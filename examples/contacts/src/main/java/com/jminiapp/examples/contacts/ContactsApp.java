@@ -1,4 +1,4 @@
-package com.jminiapp.examples;
+package com.jminiapp.examples.contacts;
 
 import com.jminiapp.core.api.*;
 import java.util.*;
@@ -128,7 +128,7 @@ public class ContactsApp extends JMiniApp {
             List<ContactsState> data = context.getData();
             if(data != null){
                 contacts = new ArrayList<>(data);
-                System.out.println("Contacts imported successfully.");
+                System.out.println("Contacts imported successfully. Number of contacts: " + contacts.size());
             } else {
                 System.out.println("No contacts found in the imported file.");
             }

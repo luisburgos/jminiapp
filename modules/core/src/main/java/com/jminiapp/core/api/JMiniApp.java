@@ -56,11 +56,11 @@ public abstract class JMiniApp {
      * 
      * Handles errors gracefully.</p>
      */
-    public final void start() {
-        try {
-            initialize();
-            run();
-            shutdown();
+    public final void start() {// Frozen spot, template method pattern and the order of calls cannot be changed
+        try { // Hot spot, defined order of calls with abstract methods
+            initialize();   //abstract
+            run();          //abstract
+            shutdown();     //abstract
         } catch (Exception e) {
             handleError(e);
         }
@@ -140,7 +140,7 @@ public abstract class JMiniApp {
      *
      * @param context the mini-app context     
      */
-    public void setContext(JMiniAppContext context) {
+    public void setContext(JMiniAppContext context) { //Frozen spot, only the framework in JMiniAppRunner calls this
         this.context = context;
     }
 

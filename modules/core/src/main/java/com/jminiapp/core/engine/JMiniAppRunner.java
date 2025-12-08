@@ -91,7 +91,7 @@ public class JMiniAppRunner {
      *
      * @param args command-line arguments
      */
-    public void run(String[] args) {
+    public void run(String[] args) { // Frozen spot, construction and launch
         // 1. Build immutable config
         JMiniAppConfig config = buildConfiguration();
 
@@ -118,7 +118,7 @@ public class JMiniAppRunner {
             config.getAppName(),
             config.getStateClass(),
             config.getResourcesPath()
-        );
+        );  
 
         for (JMiniFormatAdapter<?> adapter : config.getAdapters()) {
             context.registerAdapter(adapter);

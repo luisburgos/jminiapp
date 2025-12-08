@@ -1,4 +1,4 @@
-package com.jminiapp.examples;
+package com.jminiapp.examples.notetaking;
 
 /**
  * Simple model representing a note with a title and content.

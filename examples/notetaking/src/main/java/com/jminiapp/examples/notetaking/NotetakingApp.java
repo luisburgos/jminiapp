@@ -1,4 +1,4 @@
-package com.jminiapp.examples;
+    package com.jminiapp.examples.notetaking;
 
 import com.jminiapp.core.api.*;
 import java.util.*;

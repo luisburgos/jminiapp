@@ -1,4 +1,4 @@
-package com.jminiapp.examples;
+package com.jminiapp.examples.flashcards;
 
 import com.jminiapp.core.api.*;
 import java.util.*;
@@ -38,7 +38,6 @@ public class FlashcardsApp extends JMiniApp {
             System.out.println("Loaded " + flashcards.size() + " flashcard(s).");
         } else {
             flashcards = new ArrayList<>();
-            flashcards.add(new FlashcardsState("", ""));
             System.out.println("Starting with a new flashcard.");
         }
     }
@@ -116,6 +115,7 @@ public class FlashcardsApp extends JMiniApp {
     // edit export to make it work with the new list for flashcards
     private void exportToFile(){
         try{
+            System.out.print("Enter the filename for export (without extension): ");
             context.setData(new ArrayList<>(flashcards));
             context.exportData("json");
             System.out.println("Flashcard exported to JSON file successfully.");
@@ -145,11 +145,6 @@ public class FlashcardsApp extends JMiniApp {
     }
 
     private void createFlashcard() {
-        FlashcardsState comparison = new FlashcardsState("","");
-        if(flashcards.size() == 1 && flashcards.contains(comparison)){
-            flashcards.remove(0);
-        }
-
         System.out.print("Enter question: ");
         String question = scanner.nextLine();
         System.out.print("Enter answer: ");
@@ -173,9 +168,12 @@ public class FlashcardsApp extends JMiniApp {
             flashcard.setAnswer(answer);
             System.out.println("Flashcard updated.");
         }
-        catch(Exception e){ // change it to detect the especific error index out of bound
+        catch(IndexOutOfBoundsException e1){
             System.out.println("Number of flashcard unexistant.");
-        } // add another exception to catch an unhandled
+        }
+        catch(Exception e2){
+            System.out.println("Error editing flashcard: " + e2.getMessage());
+        }
     }
 
     private void deleteFlashcard(int index){
@@ -183,9 +181,18 @@ public class FlashcardsApp extends JMiniApp {
             System.out.println("No flashcards to edit");
             return;
         }
-            index -= 1; // adjust for 0-based index
-        flashcards.remove(index);
-        System.out.println("Flashcard deleted.");
+        try{
+            flashcards.remove(index);
+            System.out.println("Flashcard deleted.");
+        }
+        catch(IndexOutOfBoundsException e1){
+            System.out.println("Number of flashcard unexistant.");
+            return;
+        }
+        catch(Exception e2){
+            System.out.println("Error deleting flashcard: " + e2.getMessage());
+            return;
+        }
     }
 
     private void reviewFlashcards(int index){
@@ -193,12 +200,22 @@ public class FlashcardsApp extends JMiniApp {
             System.out.println("There are no flashcards");
             return;
         }
-        FlashcardsState flashcard = flashcards.get(index);
-        System.out.println("Question: " + flashcard.getQuestion());
-        System.out.println("Press Enter to see the answer...");
-        scanner.nextLine();
-        System.out.println("Answer: " + flashcard.getAnswer());
-        scanner.nextLine(); 
+        try{
+            FlashcardsState flashcard = flashcards.get(index);
+            System.out.println("Question: " + flashcard.getQuestion());
+            System.out.println("Press Enter to see the answer...");
+            scanner.nextLine();
+            System.out.println("Answer: " + flashcard.getAnswer());
+            scanner.nextLine();
+        }
+        catch(IndexOutOfBoundsException e1){
+            System.out.println("Number of flashcard unexistant.");
+            return;
+        }
+        catch(Exception e2){
+            System.out.println("Error reviewing flashcard: " + e2.getMessage());
+            return;
+        }
     }
 
     private void showAllFlashcards() {

@@ -17,6 +17,7 @@ public class JMiniAppConfig {
      * Default base path for import/export file operations.
      * Follows Maven standard directory structure.
      */
+    // Frozen spot, inmutable after the construction
     public static final String DEFAULT_RESOURCES_PATH = "src/main/resources/";
 
     private final String appName;

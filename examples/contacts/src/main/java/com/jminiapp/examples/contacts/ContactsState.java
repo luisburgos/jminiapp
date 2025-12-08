@@ -1,4 +1,4 @@
-package com.jminiapp.examples;
+package com.jminiapp.examples.contacts;
 
 /**
  * Simple model representing a contact with a name and phone number.

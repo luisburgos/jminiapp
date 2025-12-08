@@ -1,4 +1,4 @@
-package com.jminiapp.examples;
+package com.jminiapp.examples.contacts;
 
 import com.jminiapp.core.engine.JMiniAppRunner;
 
