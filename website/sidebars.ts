@@ -44,6 +44,9 @@ const sidebars: SidebarsConfig = {
       label: 'Examples',
       items: [
         'examples/templates',
+        'examples/contacts',
+        'examples/flashcards',
+        'examples/notetaking',
         'examples/counter',
       ],
     },
