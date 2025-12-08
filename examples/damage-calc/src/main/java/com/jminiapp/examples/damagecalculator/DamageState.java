@@ -5,22 +5,20 @@ import java.util.List;
 
 public class DamageState {
 
-    private final List<Integer> damageHistory = new ArrayList<>();
+    private final List<Integer> history = new ArrayList<>();
 
-    public int calculateDamage(int attack, int defense, double multiplier) {
-        int rawDamage = (int) ((attack - (defense * 0.5)) * multiplier);
-        int finalDamage = Math.max(rawDamage, 0);
-
-        damageHistory.add(finalDamage);
+    public int calculate(int atk, int def, double mult) {
+        int raw = (int) ((atk - (def * 0.5)) * mult);
+        int finalDamage = Math.max(raw, 0);
+        history.add(finalDamage);
         return finalDamage;
     }
 
-    public List<Integer> getDamageHistory() {
-        return damageHistory;
+    public List<Integer> getHistory() {
+        return history;
     }
 
-    public void clearHistory() {
-        damageHistory.clear();
+    public void clear() {
+        history.clear();
     }
 }
-

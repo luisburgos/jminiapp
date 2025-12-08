@@ -1,6 +1,6 @@
 package com.jminiapp.examples.damagecalculator;
 
-import com.jminiapp.core.JMiniAppRunner;
+import com.jminiapp.core.engine.JMiniAppRunner;
 
 public class DamageCalculatorRunner {
 
@@ -8,7 +8,8 @@ public class DamageCalculatorRunner {
         JMiniAppRunner
                 .forApp(DamageCalculatorApp.class)
                 .withState(DamageState.class)
-                .withAdapters(new DamageJSONAdapter())
                 .run(args);
     }
 }
+
+

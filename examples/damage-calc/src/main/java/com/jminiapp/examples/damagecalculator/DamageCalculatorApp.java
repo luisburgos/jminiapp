@@ -1,11 +1,8 @@
 package com.jminiapp.examples.damagecalculator;
 
-import com.jminiapp.core.JMiniApp;
-import com.jminiapp.core.JMiniAppRunner;
+import com.jminiapp.core.engine.JMiniApp;
 
-import java.io.IOException;
 import java.util.Scanner;
-import java.util.List;
 
 public class DamageCalculatorApp extends JMiniApp {
 
@@ -14,58 +11,52 @@ public class DamageCalculatorApp extends JMiniApp {
     @Override
     protected void initialize() {
         state = context.getState(DamageState.class);
-        System.out.println("Damage Calculator App initialized.");
+        System.out.println("=== Damage Calculator READY ===");
     }
 
     @Override
     protected void run() {
-        Scanner scanner = new Scanner(System.in);
+
+        Scanner sc = new Scanner(System.in);
 
         while (true) {
-            System.out.println("\n=== DAMAGE CALCULATOR ===");
-            System.out.println("1. Calculate Damage");
-            System.out.println("2. Show Damage History");
-            System.out.println("3. Clear History");
+            System.out.println("\n1. Calculate damage");
+            System.out.println("2. Show history");
+            System.out.println("3. Clear");
             System.out.println("4. Exit");
-            System.out.print("Choose an option: ");
+            System.out.print("> ");
 
-            int choice = scanner.nextInt();
+            int option = sc.nextInt();
 
-            switch (choice) {
+            switch (option) {
                 case 1 -> {
-                    System.out.print("Attack value: ");
-                    int atk = scanner.nextInt();
+                    System.out.print("Attack: ");
+                    int atk = sc.nextInt();
 
-                    System.out.print("Defense value: ");
-                    int def = scanner.nextInt();
+                    System.out.print("Defense: ");
+                    int def = sc.nextInt();
 
-                    System.out.print("Multiplier value: ");
-                    double mult = scanner.nextDouble();
+                    System.out.print("Multiplier: ");
+                    double mult = sc.nextDouble();
 
-                    int damage = state.calculateDamage(atk, def, mult);
-                    System.out.println("Final damage = " + damage);
+                    int dmg = state.calculate(atk, def, mult);
+                    System.out.println("Damage = " + dmg);
                 }
-                case 2 -> System.out.println("History: " + state.getDamageHistory());
+
+                case 2 -> System.out.println("History: " + state.getHistory());
+
                 case 3 -> {
-                    state.clearHistory();
+                    state.clear();
                     System.out.println("History cleared.");
                 }
+
                 case 4 -> {
+                    System.out.println("Bye!");
                     return;
                 }
+
                 default -> System.out.println("Invalid option.");
             }
-        }
-    }
-
-    @Override
-    protected void shutdown() {
-        context.setData(List.of(state));
-
-        try {
-            context.exportData("damage-calc");
-        } catch (IOException e) {
-            System.out.println("Error saving state: " + e.getMessage());
         }
     }
 }
