@@ -8,12 +8,12 @@
 
     <parent>
         <groupId>com.jminiapp</groupId>
-        <artifactId>jminiapp</artifactId>
+        <artifactId>jminiapp-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>damagecalculator</artifactId>
+    <artifactId>damagec-calc</artifactId>
     <name>Damage Calculator Example</name>
 
     <dependencies>
