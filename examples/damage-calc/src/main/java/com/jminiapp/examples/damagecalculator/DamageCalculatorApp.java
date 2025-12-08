@@ -5,6 +5,7 @@ import com.jminiapp.core.JMiniAppRunner;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.List;
 
 public class DamageCalculatorApp extends JMiniApp {
 
@@ -67,3 +68,4 @@ public class DamageCalculatorApp extends JMiniApp {
             System.out.println("Error saving state: " + e.getMessage());
         }
     }
+}
