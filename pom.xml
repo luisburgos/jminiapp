@@ -16,7 +16,7 @@
     <modules>
         <module>modules/core</module>
         <module>examples/counter</module>
-        <module>examples/damagecalculator</module>
+        <module>examples/damage-calc</module>
     </modules>
 
     <properties>
