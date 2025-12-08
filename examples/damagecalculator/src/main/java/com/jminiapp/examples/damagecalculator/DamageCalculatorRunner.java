@@ -1,4 +1,4 @@
- public static void main(String[] args) {
+p public static void main(String[] args) {
         JMiniAppRunner
                 .forApp(DamageCalculatorApp.class)
                 .withState(DamageState.class)

@@ -43,8 +43,10 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Examples',
       items: [
+        { text: "Counter", link: "/examples/counter" },
+        { text: "Damage Calculator", link: "/examples/damage-calculator" },
         'examples/templates',
-        'examples/counter',
+        
       ],
     },
   ],

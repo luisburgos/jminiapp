@@ -13,14 +13,15 @@ This example demonstrates how to implement a stateful console application using 
 Inside the root folder of the project:
 
 ```bash
-mvn clean instal 
+mvn clean install
 ```
+
 Then go to the example folder:
 
 ```bash
-cd examples/damage-calculator
+cd examples/damagecalculator
 mvn exec:java
 ```
 
-## Author:
+## Author
 Waldo Cámara Villacís

@@ -23,3 +23,4 @@ public class DamageState {
         damageHistory.clear();
     }
 }
+
