@@ -1,6 +1,6 @@
 package com.jminiapp.examples.damagecalculator;
 
-import com.jminiapp.core.engine.JMiniApp;
+import com.jminiapp.core.api.JMiniApp;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ public class DamageCalculatorApp extends JMiniApp {
 
     @Override
     protected void initialize() {
-        state = context.getState(DamageState.class);
+        state = new DamageState();
         System.out.println("=== Damage Calculator READY ===");
     }
 
