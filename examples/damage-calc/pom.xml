@@ -13,7 +13,7 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>damagec-calc</artifactId>
+    <artifactId>damagecalulator</artifactId>
     <name>Damage Calculator Example</name>
 
     <dependencies>
