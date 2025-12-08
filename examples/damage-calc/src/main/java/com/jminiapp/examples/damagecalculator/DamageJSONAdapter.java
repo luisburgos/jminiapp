@@ -10,7 +10,6 @@ public class DamageJSONAdapter implements JSONAdapter<DamageState> {
         return DamageState.class;
     }
 
-    @Override
     public List<DamageState> getStateObjectsToSave(DamageState state) {
         return List.of(state);
     }
