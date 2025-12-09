@@ -1,10 +1,15 @@
 package com.jminiapp.examples.damagecalculator;
 
 import com.jminiapp.core.api.JMiniApp;
+import com.jminiapp.core.api.JMiniAppConfig;
 
 import java.util.Scanner;
 
 public class DamageCalculatorApp extends JMiniApp {
+
+    public DamageCalculatorApp(JMiniAppConfig config) {
+        super(config);
+    }
 
     private DamageState state;
 
@@ -52,11 +57,22 @@ public class DamageCalculatorApp extends JMiniApp {
 
                 case 4 -> {
                     System.out.println("Bye!");
-                    return;
+                    return; // ← Esto hace que run() termine y pase a shutdown()
                 }
 
                 default -> System.out.println("Invalid option.");
             }
         }
+    }
+
+    @Override
+    protected void shutdown() {
+        // Aquí va la limpieza final
+        System.out.println("\nShutting down Damage Calculator...");
+
+        // Si quisieras guardar datos, aquí sería
+        // state.saveHistory(context.getFile("history.txt"));
+
+        System.out.println("Resources cleaned. See you next time!");
     }
 }
